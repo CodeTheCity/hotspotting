@@ -30,15 +30,15 @@ html, body {
   margin: 20px;
   border-width: 2px;
   width: 20%;
-  height: 400px;
   float: left;
   text-align: left;
   padding-top: 0;
+  overflow: scroll;
+  height: 90%;
 }
 #directions-panel {
   margin-top: 10px;
   background-color: #FFEE77;
   padding: 10px;
-  overflow: scroll;
-  height: 174px;
+
 }
