@@ -29,9 +29,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     destination: document.getElementById('end').value,
     waypoints: waypts,
     optimizeWaypoints: true,
-    travelMode: 'DRIVING, WALKING, CYCLING, TRANSIT'
+    travelMode: 'WALKING'
   }, function(response, status) {
-    if (status === 'OK') {
+      if (status === 'OK') {
+          console.log(response);
       directionsDisplay.setDirections(response);
       var route = response.routes[0];
       var summaryPanel = document.getElementById('directions-panel');
