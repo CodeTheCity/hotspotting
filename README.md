@@ -1,2 +1,3 @@
 # hotspotting
-Hotspotting project at CTC12 
+Hotspotting project at the [CTC12 tourism hack](https://github.com/CodeTheCity/CTC12)
+
