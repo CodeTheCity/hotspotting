@@ -8,6 +8,29 @@ function initMap() {
             lng: -2.05
         }
     });
+    
+    var contentString='<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="firstHeading" class="firstHeading">Aberdeen</h1>'
+        '<div id="bodyContent">'+
+        '<p>Hello! Welcome the middle of the Code.</p>'+
+        '</div>'+
+        '</div>';
+    
+    var infowindow=new google.maps.InfoWindow({
+        content:contentString
+    });
+    
+    var marker = new google.maps.Maker({
+        position: Aberdeen,
+        map: map,
+        title:'Aberdeen(Scotland)'
+    });
+    marker.addListener('click',function() {
+        infowindow.open(map, marker);
+    });
+    
     directionsDisplay.setMap(map);
 
     document.getElementById('submit').addEventListener('click', function() {
@@ -49,8 +72,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
             for (var j = 0; j < route.legs[i].steps.length; j++) {
-                summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].distance.text + ' ' +
-                    route.legs[i].steps[j].instructions+'</p>';
+                summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
             }}
         } else {
             window.alert('Directions request failed due to ' + status);
