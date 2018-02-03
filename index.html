@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    
+        <meta charset="utf-8">
+    <title>Waypoints in directions</title>
+
+        <link rel="stylesheet" href="stripes.css">
+
+        <script type="text/javascript" src="map.js"></script>
+
+  </head>
+  <body>
+
+<div id="map"></div>
+<div id="right-panel">
+<div>
+<b>Start:</b>
+<select id="start">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br>
+<b>Waypoints:</b> <br>
+<i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
+<select multiple id="waypoints">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br>
+<b>End:</b>
+<select id="end">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br>
+  <input type="submit" id="submit">
+</div>
+<div id="directions-panel"></div>
+</div>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap">
+</script>
+    
+
+
+  </body>
+</html>
