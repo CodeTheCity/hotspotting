@@ -49,7 +49,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
             for (var j = 0; j < route.legs[i].steps.length; j++) {
-                summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
+                summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].distance.text + ' ' +
+                    route.legs[i].steps[j].instructions+'</p>';
             }}
         } else {
             window.alert('Directions request failed due to ' + status);
