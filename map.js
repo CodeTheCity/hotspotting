@@ -29,7 +29,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     destination: document.getElementById('end').value,
     waypoints: waypts,
     optimizeWaypoints: true,
-    travelMode: 'DRIVING'
+    travelMode: 'DRIVING, WALKING, CYCLING, TRANSIT'
   }, function(response, status) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
