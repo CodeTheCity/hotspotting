@@ -7,6 +7,7 @@ function initMap() {
             lat: 57.14,
             lng: -2.05
         }
+        {suppressMarker: true}
     });
     
     var contentString='<div id="content">'+
