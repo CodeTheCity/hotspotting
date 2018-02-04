@@ -14,7 +14,7 @@ function initMap() {
         '</div>'+
         '<h1 id="firstHeading" class="firstHeading">Aberdeen</h1>'
         '<div id="bodyContent">'+
-        '<p>Hello! Welcome the middle of the Code.</p>'+
+        '<p></p>'+
         '</div>'+
         '</div>';
     
