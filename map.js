@@ -74,6 +74,15 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             for (var j = 0; j < route.legs[i].steps.length; j++) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
             }}
+            function makeMarker(position,icon,title) {
+                new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon,
+                    title: title
+                }),
+            }
+                    
         } else {
             window.alert('Directions request failed due to ' + status);
         }
