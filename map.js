@@ -94,7 +94,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                         makeMarker( leg.start_location, icons.start, "title" );
                         makeMarker(leg.end_location, icons.end, 'title' );
                         }
-                    });
+                    }
                           
             
             
