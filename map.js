@@ -76,14 +76,25 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             for (var j = 0; j < route.legs[i].steps.length; j++) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
             }}
-            //
-            //function makeMarker(position,icon,title) {
-            //    new google.maps.Marker({
-            //        position: position,
-            //        map: map,
-            //        icon: icon,
-            //        title: title
-            //    }),
+            
+            service.route( {origin: origin, destination: destination }, 
+                function( response, status )
+                    if ( status == google.maps.DirectionsStatus.OK ) {
+                        display.setDirections( reponse );
+                        var leg = response.routes[ 0 ].legs[ 0 ];
+                        makeMarker( leg.start_location, icons.start, "title" );
+                        makeMarker(leg.end_location, icons.end, 'title' );
+                    }
+                          });
+                          
+            
+            function makeMarker(position,icon,title) {
+                new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon,
+                    title: title
+                }),
                                 
         } else {
             window.alert('Directions request failed due to ' + status);
