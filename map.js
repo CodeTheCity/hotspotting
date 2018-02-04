@@ -81,17 +81,20 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             // For each route, display summary information.
             for (var i = 0; i < route.legs.length; i++) {
                 var routeSegment = i + 1;
-                summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-                    '</b><br>';
+                summaryPanel.innerHTML += '<h2>Route Segment: ' + routeSegment +
+                    '</h2><br>';
                 summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
                 summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-                summaryPanel.innerHTML += '<div class="instruction" id="instructions' + i + '"> </div>';
+                // summaryPanel.innerHTML += '<a  class="showSingle" target="' + i + '"><strong> - Show Route</strong></a>';
+                summaryPanel.innerHTML += '<div class="targetDiv instruction"  id="instructions' + i + '"><ul>';
                 instructions = document.getElementById('instructions'+i);
                 for (var j = 0; j < route.legs[i].steps.length; j++) {
-                    instructions.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+ ' ' +
-                        route.legs[i].steps[j].distance.text + '</p>';
+                    instructions.innerHTML += '<li>'+ route.legs[i].steps[j].instructions+ ' ' +
+                        route.legs[i].steps[j].distance.text + '</li>';
                 }
+                summaryPanel.innerHTML += '</ul></div><hr/>';
+                
             };
             
             //service.route( {origin: origin, destination: destination }, function( response, status ) {
