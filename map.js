@@ -80,7 +80,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             service.route( {origin: origin, destination: destination }, 
                 function( response, status )
                     if ( status == google.maps.DirectionsStatus.OK ) {
-                        display.setDirections( reponse );
+                        display.setDirections( response );
                         var leg = response.routes[ 0 ].legs[ 0 ];
                         makeMarker( leg.start_location, icons.start, "title" );
                         makeMarker(leg.end_location, icons.end, 'title' );
