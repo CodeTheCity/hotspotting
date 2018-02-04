@@ -7,8 +7,8 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {
-            lat: 57.14,
-            lng: -2.09
+            lat: 57.1428,
+            lng: -2.0962
         }
     });
     
@@ -28,7 +28,7 @@ function initMap() {
     
     
     var marker = new google.maps.Marker({
-        position: {lat:57.14, lng:-2.09},
+        position: {lat:57.1428, lng:-2.0962},
         map: map,
         title:'Aberdeen(Scotland)'
     });
