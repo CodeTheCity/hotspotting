@@ -43,12 +43,13 @@ function initMap() {
 }
 
 function makeMarker(position, icon, title) {
-                new google.maps.Marker({
+                return new google.maps.Marker({
                     position: position,
                     map: map,
                     icon: icon,
                     title: title
-                }),
+                });
+}
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
@@ -103,4 +104,4 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             window.alert('Directions request failed due to ' + status);
         }
     });
-};
+}
