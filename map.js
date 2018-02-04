@@ -23,6 +23,8 @@ function initMap() {
         content:contentString
     });
     
+    
+    
     var marker = new google.maps.Marker({
         position: {lat:57.14, lng:-2.05},
         map: map,
@@ -39,6 +41,14 @@ function initMap() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
 }
+
+function makeMarker(position, icon, title) {
+                new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon,
+                    title: title
+                }),
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
@@ -83,17 +93,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                         var leg = response.routes[ 0 ].legs[ 0 ];
                         makeMarker( leg.start_location, icons.start, "title" );
                         makeMarker(leg.end_location, icons.end, 'title' );
-                    }
-                          });
+                        }
+                    });
                           
             
-            function makeMarker(position,icon,title) {
-                new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    icon: icon,
-                    title: title
-                }),
+            
                                 
         } else {
             window.alert('Directions request failed due to ' + status);
