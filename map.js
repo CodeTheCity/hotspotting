@@ -84,9 +84,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
                 summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-            for (var j = 0; j < route.legs[i].steps.length; j++) {
-                summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
-            }};
+                summaryPanel.innerHTML += '<div class="instruction" id="instructions' + i + '"> </div>';
+                instructions = document.getElementById('instructions'+i);
+                for (var j = 0; j < route.legs[i].steps.length; j++) {
+                    instructions.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+ ' ' +
+                        route.legs[i].steps[j].distance.text + '</p>';
+                }
+            };
             
             //service.route( {origin: origin, destination: destination }, function( response, status ) {
             //        if ( status == google.maps.DirectionsStatus.OK ) {
