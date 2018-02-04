@@ -24,7 +24,7 @@ function initMap() {
     });
     
     var marker = new google.maps.Maker({
-        position: Aberdeen,
+        position: 'Aberdeen',
         map: map,
         title:'Aberdeen(Scotland)'
     });
