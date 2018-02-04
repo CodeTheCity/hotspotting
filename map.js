@@ -87,14 +87,14 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
             }};
             
-            service.route( {origin: origin, destination: destination }, function( response, status ) {
-                    if ( status == google.maps.DirectionsStatus.OK ) {
-                        display.setDirections( response );
-                        var leg = response.routes[ 0 ].legs[ 0 ];
-                        makeMarker( leg.start_location, icons.start, "title" );
-                        makeMarker(leg.end_location, icons.end, 'title' );
-                        }
-                    }
+            //service.route( {origin: origin, destination: destination }, function( response, status ) {
+            //        if ( status == google.maps.DirectionsStatus.OK ) {
+            //            display.setDirections( response );
+            //            var leg = response.routes[ 0 ].legs[ 0 ];
+            //            makeMarker( leg.start_location, icons.start, "title" );
+            //            makeMarker(leg.end_location, icons.end, 'title' );
+            //            }
+            //        }
                           
             
             
