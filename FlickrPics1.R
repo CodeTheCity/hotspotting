@@ -30,15 +30,18 @@ sig<-oauth1.0_token(ep,myapp,cache=F)                                           
 fl_sig <- sign_oauth1.0(myapp,sig)   
 
 # Download data
-themes <- c("castles", "distillery", "waterfall", "stone circle", "unique",
+themes <- c("castles", "waterfall", "unique",
        "outdoor", "wildlife", "historic", "sacred", "family", "accessible",
        "peaceful", "dramatic", "romantic", "beautiful", "nature")
 
-pics <- lapply(themes, function(x){flickr_search(year = seq(2015,2017,1), text=x, 
+pics <- lapply(themes, function(x){flickr_search(year = seq(2005,2017,1), text=x, 
               woeid="10243", extras="date_taken,geo,tags")})
 
 pics <- do.call(rbind, pics)
 
+<<<<<<< HEAD
+write.table(pics, "Flickr_pics.txt", row.names = F)
+=======
 ##################Mapping function################################
 
 search_terms <- unique(pics$text)
@@ -50,4 +53,5 @@ hotspots_list <- do.call(rbind, hotspots)
 ############convert to json #######################
 
 hotspots <- toJSON(hotspots_list)
+>>>>>>> c8eabad7b061e3a4cfc207c0e67da01e4d52b8f7
 

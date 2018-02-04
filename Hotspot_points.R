@@ -27,6 +27,10 @@ hotspot_points<- function(data,lon=0.5,lat=0.5){
   r2 <- r==localmax
   maxXY <- xyFromCell(r2, Which(r2==1, cells=TRUE))
   maxXY <- as.data.frame (maxXY)
+  maxXY$pop<- extract(r,maxXY)
+  maxXY <- maxXY[rev(order(maxXY$pop)),]
+  maxXY <- maxXY[maxXY$pop > mean(maxXY$pop),]
+  
   maxXY$text <- rep(unique(data$text), dim(maxXY)[1])
   return(maxXY)
   }
