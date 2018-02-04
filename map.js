@@ -28,6 +28,7 @@ function initMap() {
         map: map,
         title:'Aberdeen(Scotland)'
     });
+    
     marker.addListener('click',function() {
         infowindow.open(map, marker);
     });
