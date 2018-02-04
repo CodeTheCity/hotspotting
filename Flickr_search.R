@@ -66,9 +66,8 @@ flickr_search <- function(year, text, woeid, extras = NULL){
         tags<- xpathSApply(getPhotos_data,"//photo",xmlGetAttr,"tags")            #extract tags
         latitude<- xpathSApply(getPhotos_data,"//photo",xmlGetAttr,"latitude")    #extract latitude
         longitude<- xpathSApply(getPhotos_data,"//photo",xmlGetAttr,"longitude")  #extract longitude
-        text <- text
         
-        tmp_df<-data.frame(cbind(id,owner,datetaken,tags,latitude,longitude),stringsAsFactors=FALSE)
+        tmp_df<-data.frame(cbind(id,owner,datetaken,tags,latitude,longitude), text = rep(text, length(id)),stringsAsFactors=FALSE)
         
         
         tmp_df$page <- i
