@@ -19,7 +19,7 @@ hotspot_points<- function(data,lon=0.5,lat=0.5){
   data_dens <- kde2d(x=data$longitude,y=data$latitude,h=c(x_dw,y_dw))
   data_dens_df <- data.frame(expand.grid(x=data_dens$x,y=data_dens$y),z=as.vector(data_dens$z))
   
-  w = matrix(1,5,5)
+  w = matrix(1,3,3)
   x = data_dens
   r = raster(x)
   max_z <- function(X) max(X, na.rm=TRUE)
