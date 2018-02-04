@@ -1,6 +1,7 @@
 function initMap() {
     var directionsService = new google.maps.DirectionsService;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsDisplay = new google.maps.DirectionsRenderer ({suppressMarker: true});
+    
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: {
@@ -22,8 +23,8 @@ function initMap() {
         content:contentString
     });
     
-    var marker = new google.maps.Maker({
-        position: Aberdeen,
+    var marker = new google.maps.Marker({
+        position: 'Aberdeen',
         map: map,
         title:'Aberdeen(Scotland)'
     });
@@ -74,6 +75,15 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             for (var j = 0; j < route.legs[i].steps.length; j++) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
             }}
+            //
+            //function makeMarker(position,icon,title) {
+            //    new google.maps.Marker({
+            //        position: position,
+            //        map: map,
+            //        icon: icon,
+            //        title: title
+            //    }),
+                                
         } else {
             window.alert('Directions request failed due to ' + status);
         }
