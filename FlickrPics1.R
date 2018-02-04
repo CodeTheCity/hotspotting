@@ -7,7 +7,9 @@ library(ggplot2)
 library(ggmap)
 library(MASS)
 library(raster)
+library(rjson)
 source("Flickr_search.R")
+source("Hotspot_points.R")
 
 # Authenticate
 
@@ -39,51 +41,13 @@ pics <- do.call(rbind, pics)
 
 ##################Mapping function################################
 
+search_terms <- unique(pics$text)
 
-### Calculate distances to define bandwith for density estimation
-## distance lon for y axis
+hotspots <- lapply(search_terms,function(x){hotspot_points(pics[pics$text==x,])})
 
-## distance lat for x axis
-x_dm = 3.013/x
-x_dw = 0.05/x_dm
-x_dw
+hotspots_list <- do.call(rbind, hotspots)
 
-y_dm = 2.781/y 
-y_dw = 0.025/y_dm 
-y_dw
+############convert to json #######################
 
-pics$latitude <- as.numeric(pics$latitude)
-pics$longitude <- as.numeric(pics$longitude)
-pics_dens <- kde2d(x=pics$longitude,y=pics$latitude,h=c(x_dw,y_dw))
-pics_dens_df <- data.frame(expand.grid(x=pics_dens$x,y=pics_dens$y),z=as.vector(pics_dens$z))
-str(pics_dens_df)
-
-w = matrix(1,5,5)
-x = pics_dens
-r = raster(x)
-max_z <- function(X) max(X, na.rm=TRUE)
-localmax <- focal(r, w, fun = max_z, pad=TRUE)
-r2 <- r==localmax
-maxXY <- xyFromCell(r2, Which(r2==1, cells=TRUE))
-maxXY <- as.data.frame (maxXY)
-
-
-
-Map <-get_googlemap(c(lon=mean(pics$longitude), lat=mean(pics$latitude)), zoom=11, maptype="roadmap") 
-
-Density_map <-ggmap(Map) + stat_contour(aes(x=x,y=y,z=z,fill=..level..),geom="polygon", data=pics_dens_df)+
-  geom_point(aes(x=x,y=y),colour="red", data=maxXY) +
-  scale_x_continuous( limits = c(min(pics_dens_df$x),max(pics_dens_df$x)) , expand = c( 0.05 , 0.05) ) +
-  scale_y_continuous( limits = c(min(pics_dens_df$y),max(pics_dens_df$y)) , expand = c( 0.05 , 0.05) )
-
-Density_map
-
-Point_map <- ggmap(Map) +
-  geom_point(aes(x=x,y=y), data=maxXY) +
-  scale_x_continuous( limits = c(min(pics_dens_df$x),max(pics_dens_df$x)) , expand = c( 0.05 , 0.05) ) +
-  scale_y_continuous( limits = c(min(pics_dens_df$y),max(pics_dens_df$y)) , expand = c( 0.05 , 0.05) )
-Point_map
-
-str(maxXY)
-
+hotspots <- toJSON(hotspots_list)
 
