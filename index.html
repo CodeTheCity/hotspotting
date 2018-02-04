@@ -7,16 +7,20 @@
         <meta charset="utf-8">
     <title>Waypoints in directions</title>
 
-        <link rel="stylesheet" href="style.css">
-
-        <script type="text/javascript" src="map.js"></script>
-
+    <link rel="stylesheet" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="toggle.js"></script>
+    <script type="text/javascript" src="map.js"></script>
   </head>
   <body>
-
+<section id="header">
+  <img src="header_img.png" style="width:100%"/><br/>
+</section>
 <div id="map"></div>
 <div id="right-panel">
 <div>
+    <h2>Plan Your Journey</h2><hr/>
 <b>Start:</b>
 <select id="start">
   <option value="Aberdeen, Scotland">Aberdeen</option>
@@ -53,8 +57,8 @@
   <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
   <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
 </select>
-<br>
-  <input type="submit" id="submit">
+<br><br/>
+  <input type="submit" id="submit" class="btn btn-primary">
 </div>
 <div id="directions-panel"></div>
 </div>
@@ -62,8 +66,6 @@
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOdX10-l6BSWt0JZM5PgiDRYuasDw263Q&callback=initMap">
 </script>
-    
-
 
   </body>
 </html>

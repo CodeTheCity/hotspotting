@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    
+        <meta charset="utf-8">
+        <title>Waypoints in directions</title>
+
+        <link rel="stylesheet" href="style.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="toggle.js"></script>             
+        <script type="text/javascript" src="map.js"></script>
+  </head>
+  <body>
+
+<div id="map"></div>
+<div id="right-panel">
+<div>
+<b>Start:</b>
+<select id="start">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br>
+<b>Waypoints:</b> <br>
+<i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
+<select multiple id="waypoints">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br>
+<b>End:</b>
+<select id="end">
+  <option value="Aberdeen, Scotland">Aberdeen</option>
+  <option value="Duthie Park, Aberdeen">Duthie Park</option>
+  <option value="Winter Gardens, Aberdeen">Winter Garden</option>
+  <option value="Footdee, Aberdeen">Footdee</option>
+  <option value="St Machar Cathedral, Aberdeen">St Machar Cathedral</option>
+  <option value="Craigievar, Aberdeen">Craigievar</option>
+  <option value="Johnstone Garden, Aberdeen">Johnstone Garden</option>
+  <option value="Greyhope Bay, Aberdeen">Greyhope Bay</option>
+</select>
+<br><br/>
+  <input type="submit" id="submit" class="btn btn-primary">
+</div>
+<div id="directions-panel">
+    <h2>Route Segment: 1</h2>
+    <br>Aberdeen, UK to David Welch Winter Gardens, Polmuir Road, Aberdeen AB11 7TH, UK<br>
+    2.7 km<br>
+    <a class="showSingle" target="0"><strong>  - Show Route</strong></a>
+    <div id="instructions0" class="targetDiv" style="display: none;"> 
+        <ul>      
+            <li>Walk <b>north-east</b> towards <b>W N St</b></li><li>Turn <b>right</b> onto <b>W N St</b></li><li>Turn <b>right</b> onto <b>King St</b>/<b>A9013</b></li>
+            <div style="font-size:0.9em">Continue to follow A9013</div><li>Turn <b>left</b> onto <b>Crown St</b></li><li>Turn <b>right</b> onto <b>Ferryhill Rd</b></li><li>Turn <b>left</b></li><li>Turn <b>right</b></li><li>Turn <b>left</b></li><li>Sharli <b>right</b></li><li>Turn <b>right</b></li></li><div style="font-size:0.9em">Destination will be on the left</ul>    
+        </ul>
+    </div>
+    <br/><hr/>
+
+    <h2>Route Segment: 2</h2>
+    <br>David Welch Winter Gardens, Polmuir Road, Aberdeen AB11 7TH, UK to Aberdeen, UK<br>2.7 km<br><br>
+    <a  class="showSingle" target="1"><strong> - Show Route</strong></a>    
+    <div id="instructions1" class="targetDiv"  style="display: none;">  
+        <ul>
+            <li>Walk <b>south</b></li><li>Turn <b>left</b></li><li>Turn <b>left</b></li><li>Turn <b>right</b></li><li>Turn <b>left</b> towards <b>Fonthill Rd</b></li><li>Turn <b>right</b> onto <b>Fonthill Rd</b></li><li>Continue straight onto <b>Ferryhill Rd</b></li><li>Turn <b>left</b> onto <b>Crown St</b></li><li>Turn <b>right</b> onto <b>Union St</b>/<b>A9013</b></li>
+            <div style="font-size:0.9em">Continue to follow A9013</div><li>Turn <b>left</b> onto <b>W N St</b></li><li>Turn <b>left</b></li></div>       
+        </ul>
+    </div>
+</div>
+<div id="directions-panel"></div>
+</div>
+
+  </body>
+</html>
