@@ -75,10 +75,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
             for (var j = 0; j < route.legs[i].steps.length; j++) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
-            }}
+            }};
             
-            service.route( {origin: origin, destination: destination }, 
-                function( response, status )
+            service.route( {origin: origin, destination: destination }, function( response, status )
                     if ( status == google.maps.DirectionsStatus.OK ) {
                         display.setDirections( response );
                         var leg = response.routes[ 0 ].legs[ 0 ];
