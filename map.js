@@ -23,7 +23,7 @@ function initMap() {
         content:contentString
     });
     
-    var marker = new google.maps.Maker({
+    var marker = new google.maps.Marker({
         position: 'Aberdeen',
         map: map,
         title:'Aberdeen(Scotland)'
