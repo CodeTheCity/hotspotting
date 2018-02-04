@@ -1,3 +1,5 @@
+var markers = [];
+
 function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer ({suppressMarker: true});
@@ -23,11 +25,14 @@ function initMap() {
         content:contentString
     });
     
+    
+    
     var marker = new google.maps.Marker({
-        position: 'Aberdeen',
+        position: {lat:57.14, lng:-2.05},
         map: map,
         title:'Aberdeen(Scotland)'
     });
+    
     marker.addListener('click',function() {
         infowindow.open(map, marker);
     });
@@ -37,6 +42,15 @@ function initMap() {
     document.getElementById('submit').addEventListener('click', function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
+}
+
+function makeMarker(position, icon, title) {
+                return new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    icon: icon,
+                    title: title
+                });
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -74,15 +88,19 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
             for (var j = 0; j < route.legs[i].steps.length; j++) {
                 summaryPanel.innerHTML += '<p>'+ route.legs[i].steps[j].instructions+'</p>';
-            }}
-            //
-            //function makeMarker(position,icon,title) {
-            //    new google.maps.Marker({
-            //        position: position,
-            //        map: map,
-            //        icon: icon,
-            //        title: title
-            //    }),
+            }};
+            
+            //service.route( {origin: origin, destination: destination }, function( response, status ) {
+            //        if ( status == google.maps.DirectionsStatus.OK ) {
+            //            display.setDirections( response );
+            //            var leg = response.routes[ 0 ].legs[ 0 ];
+            //            makeMarker( leg.start_location, icons.start, "title" );
+            //            makeMarker(leg.end_location, icons.end, 'title' );
+            //            }
+            //        
+                          
+            
+            
                                 
         } else {
             window.alert('Directions request failed due to ' + status);

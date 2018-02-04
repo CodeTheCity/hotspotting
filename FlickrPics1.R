@@ -7,7 +7,9 @@ library(ggplot2)
 library(ggmap)
 library(MASS)
 library(raster)
+library(rjson)
 source("Flickr_search.R")
+source("Hotspot_points.R")
 
 # Authenticate
 
@@ -37,5 +39,19 @@ pics <- lapply(themes, function(x){flickr_search(year = seq(2005,2017,1), text=x
 
 pics <- do.call(rbind, pics)
 
+<<<<<<< HEAD
 write.table(pics, "Flickr_pics.txt", row.names = F)
+=======
+##################Mapping function################################
+
+search_terms <- unique(pics$text)
+
+hotspots <- lapply(search_terms,function(x){hotspot_points(pics[pics$text==x,])})
+
+hotspots_list <- do.call(rbind, hotspots)
+
+############convert to json #######################
+
+hotspots <- toJSON(hotspots_list)
+>>>>>>> c8eabad7b061e3a4cfc207c0e67da01e4d52b8f7
 
