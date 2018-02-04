@@ -39,19 +39,45 @@ pics <- lapply(themes, function(x){flickr_search(year = seq(2005,2017,1), text=x
 
 pics <- do.call(rbind, pics)
 
-<<<<<<< HEAD
+
 write.table(pics, "Flickr_pics.txt", row.names = F)
-=======
+
 ##################Mapping function################################
+pics <- read.table("Flickr_pics.txt", header=T, stringsAsFactors = F)
 
 search_terms <- unique(pics$text)
 
-hotspots <- lapply(search_terms,function(x){hotspot_points(pics[pics$text==x,])})
+#hotspots <- lapply(search_terms, function(x){hotspot_points(pics[pics$text == x, ])})
 
-hotspots_list <- do.call(rbind, hotspots)
+hotspots_castles <- hotspot_points(data = subset(pics, text == "castles"))
+
+hotspots_waterfall <- hotspot_points(data = subset(pics, text == "waterfall"))
+
+hotspots_unique <- hotspot_points(data = subset(pics, text == "unique"))
+
+hotspots_outdoor <- hotspot_points(data = subset(pics, text == "outdoor"))
+
+hotspots_wildlife <- hotspot_points(data = subset(pics, text == "wildlife"))
+
+hotspots_historic <- hotspot_points(data = subset(pics, text == "historic"))
+
+hotspots_family <- hotspot_points(data = subset(pics, text == "family"))
+
+hotspots_peaceful <- hotspot_points(data = subset(pics, text == "peaceful"))
+
+hotspots_beautiful <- hotspot_points(data = subset(pics, text == "beautiful"))
+
+hotspots_nature <- hotspot_points(data = subset(pics, text == "nature"))
+
+hotspots <- rbind(hotspots_castles, hotspots_waterfall, hotspots_unique, hotspots_outdoor,
+                  hotspots_wildlife, hotspots_historic, hotspots_family, hotspots_peaceful,
+                  hotspots_beautiful, hotspots_nature)
+
+#hotspots_list <- do.call(rbind, hotspots)
 
 ############convert to json #######################
 
-hotspots <- toJSON(hotspots_list)
->>>>>>> c8eabad7b061e3a4cfc207c0e67da01e4d52b8f7
+hotspots <- toJSON(hotspots)
+
+write(hotspots, file="all_hotspots.JSON")
 
